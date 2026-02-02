@@ -1,0 +1,46 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "@vercel/python@4.3.1",
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/sequences",
+      "schedule": "0 */2 * * *"
+    },
+    {
+      "path": "/api/cron/inbox",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/cron/scoring",
+      "schedule": "0 6 * * *"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "SENDGRID_API_KEY": "@sendgrid_api_key",
+    "APOLLO_API_KEY": "@apollo_api_key",
+    "IMAP_HOST": "@imap_host",
+    "IMAP_USER": "@imap_user",
+    "IMAP_PASSWORD": "@imap_password",
+    "HANDOFF_WEBHOOK": "@handoff_webhook"
+  }
+}
