@@ -1,0 +1,30 @@
+title: LeadClaw
+description: Autonomous AI-powered sales and lead generation engine
+baseurl: "/leadclaw"
+url: "https://helms-ai.github.io"
+
+theme: jekyll-theme-cayman
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
